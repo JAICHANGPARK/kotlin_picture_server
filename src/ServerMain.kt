@@ -75,9 +75,6 @@ fun main(args: Array<String>) {
 
         oldDate = readDate
 
-
-
-
         serverSocket = ServerSocket(receivePort)
         println("서버가 시작되었습니다.")
         serverLayout.mConnectInfo.text = "연결 대기 중.."
@@ -86,8 +83,7 @@ fun main(args: Array<String>) {
         serverLayout.mProgressBar.value = 0
         serverLayout.mRemainFile.text = ""
         serverLayout.mFileName.text = ""
-
-
+        
         dis = DataInputStream(socket.getInputStream())
         var clientIp: String? = null
         try {
@@ -105,7 +101,7 @@ fun main(args: Array<String>) {
         dis.close()
 
         socket = Socket(clientIp, connectPort)
-        serverLayout.mConnectInfo.text ="클라이언트 연결 종료"
+        serverLayout.mConnectInfo.text ="클라이언트 연결 완료"
         dos = DataOutputStream(socket.getOutputStream())
         dos.writeUTF(readDate)
         socket.close()
@@ -115,6 +111,7 @@ fun main(args: Array<String>) {
         serverSocket.close()
         dis.close()
         dos.close()
+
 
     }
 }
