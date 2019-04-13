@@ -36,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/ServerMain.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-58">
-              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#0#220#0" expanded="true" />
               </folding>
@@ -204,7 +204,7 @@
     <entry file="file://$PROJECT_DIR$/src/ServerMain.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-58">
-          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#0#220#0" expanded="true" />
           </folding>

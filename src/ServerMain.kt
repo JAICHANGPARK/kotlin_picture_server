@@ -83,7 +83,7 @@ fun main(args: Array<String>) {
         serverLayout.mProgressBar.value = 0
         serverLayout.mRemainFile.text = ""
         serverLayout.mFileName.text = ""
-        
+
         dis = DataInputStream(socket.getInputStream())
         var clientIp: String? = null
         try {
