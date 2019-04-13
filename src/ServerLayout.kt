@@ -9,16 +9,16 @@ import javax.swing.*
 class ServerLayout : JFrame() {
 
 
-    private val mConnectInfo: JLabel
-    private val mFilePath: JLabel
-    private val mLastDate: JLabel
+    val mConnectInfo: JLabel
+    val mFilePath: JLabel
+    val mLastDate: JLabel
 
-    private val mFileName: JLabel
-    private val mRemainFile: JLabel
+    val mFileName: JLabel
+    val mRemainFile: JLabel
     private val mPcName: JLabel
     private val mIpInfo: JLabel
 
-    private val mProgressBar: JProgressBar
+    val mProgressBar: JProgressBar
 
     init {
 
