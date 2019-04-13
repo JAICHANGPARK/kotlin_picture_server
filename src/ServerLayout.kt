@@ -1,11 +1,12 @@
 import java.awt.Dimension
 import java.awt.Font
 import java.lang.Exception
+import java.net.NetworkInterface
+import java.net.UnknownHostException
 import java.util.*
 import javax.swing.*
 
 class ServerLayout : JFrame() {
-
 
 
     private val mConnectInfo: JLabel
@@ -13,11 +14,11 @@ class ServerLayout : JFrame() {
     private val mLastDate: JLabel
 
     private val mFileName: JLabel
-    private val mRemainFile : JLabel
-    private val mPcName : JLabel
-    private val mIpInfo : JLabel
+    private val mRemainFile: JLabel
+    private val mPcName: JLabel
+    private val mIpInfo: JLabel
 
-    private val mProgressBar : JProgressBar
+    private val mProgressBar: JProgressBar
 
     init {
 
@@ -87,18 +88,18 @@ class ServerLayout : JFrame() {
             try {
                 val runtime = Runtime.getRuntime()
                 runtime.exec("cmd.exe /c explorer " + mFilePath.text)
-            }catch (e : Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
 
-        openButton.setBounds(495,55,123,51)
+        openButton.setBounds(495, 55, 123, 51)
         sendInformation.add(openButton)
 
 
 
         mRemainFile = JLabel()
-        mRemainFile.setBounds(495,181,123,30)
+        mRemainFile.setBounds(495, 181, 123, 30)
         sendInformation.add(mRemainFile)
 
 
@@ -125,6 +126,36 @@ class ServerLayout : JFrame() {
         mIpInfo.font = Font(null, Font.PLAIN, 13)
         mIpInfo.setBounds(81, 93, 229, 30)
         pcInformation.add(mIpInfo)
+
+    }
+
+    internal fun setPCName() {
+        try {
+            val localMachine = java.net.InetAddress.getLocalHost()
+            mPcName.text = localMachine.hostName
+        } catch (e: UnknownHostException) {
+            e.printStackTrace()
+        }
+    }
+
+    internal fun setIP() {
+        try {
+            val en = NetworkInterface.getNetworkInterfaces()
+            while (en.hasMoreElements()) {
+                val networkIf = en.nextElement()
+                val ipAddress = networkIf.inetAddresses
+                while (ipAddress.hasMoreElements()) {
+                    val inetAddress = ipAddress.nextElement()
+                    if (!inetAddress.isLoopbackAddress
+                        && !inetAddress.isLinkLocalAddress
+                        && inetAddress.isSiteLocalAddress
+                    ) {
+                        mIpInfo.text = inetAddress.hostAddress.toString()
+                    }
+                }
+            }
+        } catch (ex: Exception) {
+        }
 
     }
 
