@@ -1,5 +1,6 @@
 import java.awt.Dimension
 import java.awt.Font
+import java.lang.Exception
 import java.util.*
 import javax.swing.*
 
@@ -75,6 +76,27 @@ class ServerLayout : JFrame() {
         mFileName.font = Font(null, Font.PLAIN, 14)
         mFileName.setBounds(81, 181, 402, 30)
         sendInformation.add(this.mFileName)
+
+        mProgressBar = JProgressBar()
+        mProgressBar.setBounds(12, 230, 471, 45)
+        sendInformation.add(mProgressBar)
+
+        val openButton = JButton("저장위치 열기")
+        openButton.font = Font(null, Font.PLAIN, 13)
+        openButton.addActionListener {
+            try {
+                val runtime = Runtime.getRuntime()
+                runtime.exec("cmd.exe /c explorer " + mFilePath.text)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+
+        openButton.setBounds(495,55,123,51)
+        sendInformation.add(openButton)
+
+
+
         mRemainFile = JLabel()
         mRemainFile.setBounds(495,181,123,30)
         sendInformation.add(mRemainFile)
